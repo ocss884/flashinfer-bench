@@ -1,0 +1,73 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fibench"
+version = "0.1.0"
+description = "Kernel library for MLSys 2026 flashinfer-bench."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "Junrong Lin" }
+]
+keywords = ["mlsys", "benchmark", "kernel", "flashinfer", "inference", "cuda"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries",
+]
+dependencies = [
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.6",
+    "mypy>=1.10",
+    "build>=1.2",
+    "twine>=5.1",
+]
+bench = [
+]
+
+[project.urls]
+Homepage = "https://github.com/ocss884/flashinfer-bench"
+Repository = "https://github.com/ocss884/flashinfer-bench"
+Issues = "https://github.com/ocss884/flashinfer-bench/issues"
+
+[tool.setuptools.package-dir]
+fibench = "."
+"fibench.cutile" = "cutile"
+
+[tool.setuptools]
+packages = ["fibench", "fibench.cutile"]
+include-package-data = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E203", "E501"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
